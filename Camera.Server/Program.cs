@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Camera.Server
+﻿namespace Camera.Server
 {
     internal class Program
     {
