@@ -1,0 +1,1 @@
+protoc -I="./Proto/" --csharp_out="./output" "./Proto/messages.proto"

@@ -1,0 +1,43 @@
+syntax="proto3";
+package picam;
+option csharp_namespace = "Camera.Shared.Messages";
+
+message Ping{
+	bytes uuid = 1;
+}
+
+message Pong{
+	bytes uuid = 1;
+}
+
+message Bye{
+	bool graceful = 1;
+	string error = 2;
+}
+
+message ChangeModeRequest {
+	enum Mode{
+		RecordingMode=0;
+		IntervalShutterMode=1;
+		LiveMode=2;
+		PhotoMode=3;
+		Idle=4;
+	}
+
+	message ChangeModeConfiguration{
+		optional string filename = 1;
+		optional int32 intervalms = 2;
+		optional int32 durationms = 3;
+		optional int32 width = 4;
+		optional int32 height = 5;
+	}
+
+	Mode mode = 1;
+	optional ChangeModeConfiguration configuration = 2;
+}
+
+message ChangeModeResponse{
+	bool wasSuccess = 1;
+	optional bytes ip = 2;
+	optional int32 port = 3;
+}

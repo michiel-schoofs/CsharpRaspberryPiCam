@@ -25,9 +25,16 @@ namespace Camera.Shared.Connection
 
         public void StatListening()
         {
-            Log.Information("Starting to listen on {ip}:{port}", configuration.ServerAddress, configuration.ServerPort);
-            listener.Start();
-            client = listener.AcceptTcpClient();
+            try
+            {
+                Log.Information("Starting to listen on {ip}:{port}", configuration.ServerAddress, configuration.ServerPort);
+                listener.Start();
+                client = listener.AcceptTcpClient();
+            } catch (Exception ex)
+            {
+                Log.Error(ex, "Error connecting to server");
+                throw;
+            }
         }
 
         public void Connect()
@@ -56,7 +63,6 @@ namespace Camera.Shared.Connection
             Log.Debug("Number of bytes read {length}", numBytes);
             return buffer.Take(numBytes).ToArray();
         }
-
         public void Send(byte[] data)
         {
             Log.Debug("Number of bytes to send {length}", data.Length);

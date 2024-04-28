@@ -10,7 +10,7 @@ namespace Camera.Server
             Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Debug()
             .WriteTo.Console()
-            .WriteTo.File("Logs/client.txt", rollingInterval: RollingInterval.Day)
+            .WriteTo.File("Logs/server.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
 
             NetworkSocketConfiguration configuration = NetworkSocketConfiguration.Default;
