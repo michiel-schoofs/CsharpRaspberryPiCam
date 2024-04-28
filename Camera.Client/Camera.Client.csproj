@@ -2,13 +2,18 @@
 
 
   <PropertyGroup>
+    <TargetFramework>net481</TargetFramework>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
 
   <ItemGroup>
     <PackageReference Include="Iot.Device.Bindings" Version="3.1.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Camera.Shared\Camera.Shared.csproj" />
   </ItemGroup>
 
 </Project>
